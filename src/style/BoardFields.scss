@@ -1,0 +1,24 @@
+.board_fields {
+  display: flex;
+  min-height: 300px;
+
+  .board_category {
+    flex: 1;
+  }
+
+  .task_card {
+    margin-top: 10px;
+    margin-right: 25px;
+  }
+
+}
+
+@media screen and (max-width: 720px) {
+  .board_fields {
+    overflow: scroll;
+
+    .board_category {
+      min-width: 320px;
+    }
+  }
+}

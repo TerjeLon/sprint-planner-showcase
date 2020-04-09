@@ -1,0 +1,27 @@
+@import "base/base";
+
+button {
+  background-color: transparent;
+  border: 0;
+  font-size: 1.2em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  transition: 300ms;
+  width: max-content;
+  outline: none;
+
+  @include set_color(color, $text-secondary);
+  @include set_color(fill, $text-secondary);
+}
+
+button svg {
+  margin-right: 5px;
+}
+
+button:hover {
+  cursor: pointer;
+
+  @include set_color(color, $text-secondary-focus);
+  @include set_color(fill, $text-secondary-focus);
+}

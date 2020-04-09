@@ -1,0 +1,38 @@
+$bg: 'bg';
+$bg-secondary: 'bg-secondary';
+$bg-secondary-focus: 'bg-secondary-focus';
+$text: 'text';
+$text-secondary: 'text-secondary';
+$text-secondary-focus: 'text-secondary-focus';
+$bug: 'bug';
+$feature: 'feature';
+
+$colors: (
+  bg: #F0F0F0,
+  bg-dark: #181818,
+  bg-secondary: #E3E3E3,
+  bg-secondary-dark: #0E0E0E,
+  bg-secondary-focus: #C0C0C0,
+  bg-secondary-focus-dark: #282828,
+  text: #000,
+  text-dark: #FFF,
+  text-secondary: #54647B,
+  text-secondary-dark: #91A5C2,
+  text-secondary-focus: #1866D6,
+  text-secondary-focus-dark: #C6D5EB,
+  bug: #D06767,
+  bug-dark: #521919,
+  feature: #7BBBBD,
+  feature-dark: #195052
+);
+
+@mixin set_color($property, $color, $opacity: 1) {
+  $c: map-get($colors, #{$color});
+  #{$property}: rgba($c, $opacity);
+
+  @media (prefers-color-scheme: dark) {
+    $c: map-get($colors, #{$color}-dark);
+    #{$property}: rgba($c, $opacity);
+  }
+}
+

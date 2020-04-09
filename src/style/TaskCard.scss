@@ -1,0 +1,46 @@
+@import "base/base";
+
+.task_card {
+  padding: 5px 15px;
+  border-left: 5px solid;
+  cursor: pointer;
+  user-select: none;
+  transition: 300ms color;
+
+  @include round_corners;
+  @include set_color(background-color, $bg-secondary);
+
+  &:hover {
+    @include set_color(background-color, $bg-secondary-focus);
+  }
+
+  &:active {
+    cursor: grabbing;
+  }
+
+  &.bug {
+    @include set_color(border-left-color, $bug);
+  }
+
+  &.feature {
+    @include set_color(border-left-color, $feature);
+  }
+
+  &.dragging {
+    position: fixed;
+    -webkit-box-shadow: -15px 15px 37px -1px rgba(0,0,0,0.62);
+    -moz-box-shadow: -15px 15px 37px -1px rgba(0,0,0,0.62);
+    box-shadow: -15px 15px 37px -1px rgba(0,0,0,0.62);
+  }
+
+  h1 {
+    font-size: 1.1em;
+    font-weight: 900;
+  }
+
+  p {
+    font-size: 0.9em;
+    @include set_color(color, $text, 0.7);
+  }
+}
+

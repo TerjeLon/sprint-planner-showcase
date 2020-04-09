@@ -1,0 +1,49 @@
+@import "base/base";
+
+.board_category_header {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: max-content;
+}
+
+.category_title {
+  text-transform: uppercase;
+  font-size: 0.8em;
+
+  @include set_color(color, $text-secondary)
+}
+
+.category_total_tasks {
+  margin-left: 10px;
+  font-size: 0.6em;
+  font-weight: 900;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  color: #fff;
+  line-height: 15px;
+  text-align: center;
+
+  @include set_color(background-color, $text-secondary);
+  @include set_color(color, $bg);
+}
+
+.placeholder {
+  border: 3px dashed;
+  padding: 5px 15px;
+  height: 100px;
+  margin-top: 10px;
+  margin-right: 25px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  font-weight: 900;
+  pointer-events: none;
+
+  @include set_color(border-color, $text-secondary);
+  @include set_color(color, $text-secondary);
+  @include round_corners;
+}

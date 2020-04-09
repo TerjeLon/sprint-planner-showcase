@@ -1,0 +1,43 @@
+.board_header {
+  display: flex;
+  width: 100%;
+
+  & > * {
+    flex: 1;
+  }
+}
+
+.board_header_nav {
+  display: flex;
+  flex: 0;
+  justify-items: flex-end;
+  justify-content: flex-end;
+
+  button {
+    margin: 0 0 0 10px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .board_header {
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+
+    h1 {
+      margin-block-end: 10px;
+    }
+
+    & > * {
+      min-width: 100%;
+    }
+  }
+
+  .board_header_nav {
+    justify-content: flex-start;
+
+    button {
+      margin: 0 10px 0 0;
+      padding: 0;
+    }
+  }
+}

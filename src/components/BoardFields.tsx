@@ -31,7 +31,7 @@ export default function BoardFields(props: any) {
 
         if (action.fromCategoryId === action.toCategoryId) {
             newCategories[toCategoryIndex].tasks[taskToInsert.index].index = action.insertIndex;
-            updateTaskIndexes(taskToInsert, newCategories[toCategoryIndex]);
+            newCategories[toCategoryIndex] = updateTaskIndexes(taskToInsert, newCategories[toCategoryIndex]);
             return { categories: newCategories }
         }
 
@@ -57,7 +57,7 @@ export default function BoardFields(props: any) {
 
     const [state, dispatch] = useReducer(onMoveReducer, props.board);
 
-    return(
+    return (
         <div className="board_fields">
             {
                 state.categories.map((category: Category) => {

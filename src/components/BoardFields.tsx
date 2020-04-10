@@ -30,29 +30,30 @@ export default function BoardFields(props: any) {
         }
 
         if (action.fromCategoryId === action.toCategoryId) {
-            newCategories[toCategoryIndex].tasks[taskToInsert.index].index = action.insertIndex;
-            newCategories[toCategoryIndex] = updateTaskIndexes(taskToInsert, newCategories[toCategoryIndex]);
+            const taskToMove = JSON.parse(JSON.stringify(taskToInsert));
+            taskToMove.index = action.insertIndex;
+
+            newCategories[toCategoryIndex].tasks.splice(action.insertIndex, 0, taskToMove);
+            newCategories[toCategoryIndex].tasks = newCategories[toCategoryIndex].tasks.filter((task: Task) => task.index !== taskToInsert.index);
+            newCategories[toCategoryIndex] = updateTaskIndexes(newCategories[toCategoryIndex]);
             return { categories: newCategories }
         }
 
-        taskToInsert.index = action.insertIndex;
-        newCategories[toCategoryIndex].tasks.push(taskToInsert);
-        newCategories[toCategoryIndex] = updateTaskIndexes(taskToInsert, newCategories[toCategoryIndex]);
+        newCategories[toCategoryIndex].tasks.splice(action.insertIndex, 0, taskToInsert);
+        newCategories[toCategoryIndex] = updateTaskIndexes(newCategories[toCategoryIndex]);
         newCategories[fromCategoryIndex].tasks = newCategories[fromCategoryIndex].tasks.filter((task: Task) => task.id !== action.taskId);
+        newCategories[fromCategoryIndex] = updateTaskIndexes(newCategories[fromCategoryIndex]);
 
         return { categories: newCategories }
     }
 
-    function updateTaskIndexes(insertedTask: Task, categoryToUpdate: Category): Category {
-        categoryToUpdate.tasks = categoryToUpdate.tasks.map((task: Task) => {
-            if (task.index >= insertedTask.index && task.id !== insertedTask.id) {
-                task.index++;
-            }
-
+    function updateTaskIndexes(category: Category): Category {
+        category.tasks = category.tasks.map((task, index) => {
+            task.index = index;
             return task;
         });
 
-        return categoryToUpdate;
+        return category;
     }
 
     const [state, dispatch] = useReducer(onMoveReducer, props.board);

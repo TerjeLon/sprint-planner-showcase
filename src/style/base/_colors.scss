@@ -6,6 +6,8 @@ $text-secondary: 'text-secondary';
 $text-secondary-focus: 'text-secondary-focus';
 $bug: 'bug';
 $feature: 'feature';
+$destructive: 'destructive';
+$positive: 'positive';
 
 $colors: (
   bg: #F0F0F0,
@@ -23,7 +25,11 @@ $colors: (
   bug: #D06767,
   bug-dark: #521919,
   feature: #7BBBBD,
-  feature-dark: #195052
+  feature-dark: #195052,
+  destructive: #812525,
+  destructive-dark: #812525,
+  positive: #258143,
+  positive-dark: #258143
 );
 
 @mixin set_color($property, $color, $opacity: 1) {

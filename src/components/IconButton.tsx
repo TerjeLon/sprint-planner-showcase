@@ -4,6 +4,6 @@ import './../style/IconButton.scss';
 
 export default function IconButton(props: any) {
     return (
-        <button><Icon icon={ props.icon } size="22"/> { props.title }</button>
+        <button onClick={ props.onClick }><Icon icon={ props.icon } size="22"/> { props.title }</button>
     );
 }

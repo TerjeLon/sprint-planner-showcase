@@ -50,6 +50,7 @@ export default function BoardFields(props: any) {
     function updateTaskIndexes(category: Category): Category {
         category.tasks = category.tasks.map((task, index) => {
             task.index = index;
+
             return task;
         });
 

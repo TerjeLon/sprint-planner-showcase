@@ -3,19 +3,22 @@
 .task_card {
   padding: 5px 15px;
   border-left: 5px solid;
-  cursor: pointer;
-  user-select: none;
   transition: 300ms color;
 
   @include round_corners;
   @include set_color(background-color, $bg-secondary);
 
-  &:hover {
-    @include set_color(background-color, $bg-secondary-focus);
-  }
+  &:not(.edit_mode) {
+    cursor: pointer;
+    user-select: none;
 
-  &:active {
-    cursor: grabbing;
+    &:active {
+      cursor: grabbing;
+    }
+
+    &:hover {
+      @include set_color(background-color, $bg-secondary-focus);
+    }
   }
 
   &.bug {
@@ -33,6 +36,12 @@
     box-shadow: -15px 15px 37px -1px rgba(0,0,0,0.62);
   }
 
+  &.edit_mode {
+    width: 50%;
+    max-width: 500px;
+    margin-top: 50px;
+  }
+
   h1 {
     font-size: 1.1em;
     font-weight: 900;
@@ -44,3 +53,14 @@
   }
 }
 
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding: 10px;
+
+  & > * {
+    flex: -1;
+    margin-left: 15px;
+  }
+}
